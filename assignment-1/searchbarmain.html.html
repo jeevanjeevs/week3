@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Highlighter</title>
+
+    <style>
+        
+        body {
+            
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            width: 700px ;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            margin: 100px auto;
+            gap: 10px;
+            background-color: beige;
+            border: 2px solid grey;
+            border-radius: 5px;
+            box-shadow: 5px 5px 7px black;
+            
+        }
+
+        h1 {
+            font-size: 36px;
+            color: crimson;
+            text-shadow: 2px 2px 3px black;
+        }
+
+        #searchInput {
+            
+            font-size: larger;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px black;
+            
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: slateblue;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px black;
+            
+        }
+
+        button:hover {
+            background-color: coral;
+        }
+
+       
+        mark {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        @keyframes jeevu {
+            from {
+                background-color: yellow;
+            }
+            to {
+                background-color: springgreen;
+                
+            }
+        }
+        mark{
+            animation-name: jeevu;
+            animation-duration: 500ms;
+            animation-iteration-count: infinite;
+        }
+        p{
+            margin:20px;
+            text-align: justify;
+        }
+    </style>
+
+    <script>
+        function searchWord() {
+            var text = document.getElementById("text").textContent;
+            var searchWord = document.getElementById("searchInput").value;
+            var regex = new RegExp(searchWord, "ig");
+
+            var highlightedText = text.replace(regex, function(matchedText) {
+                return '<mark>' + matchedText + '</mark>';
+            });
+
+            document.getElementById("text").innerHTML = highlightedText;
+        }
+
+        document.addEventListener("DOMContentLoaded", searchWord);
+    </script>
+</head>
+<body>
+    <h1>Specify the word to be searched</h1>
+    
+    <input type="text" id="searchInput" placeholder="Enter the word">
+    <button onclick="searchWord()">Search</button>
+    <p id="text">In the bustling metropolis of New York City, a group of extraordinary individuals had assembled, known to the world as the Avengers. Earth's protectors, they were a diverse team of heroes, each with their unique abilities and backgrounds.
+
+        At the forefront was Iron Man, the brilliant inventor Tony Stark, armed with his technologically advanced suit. By his side stood Captain America, a symbol of unwavering courage and leadership, wielding his iconic shield. Thor, the Norse god of thunder, brought his enchanted hammer, Mjolnir, and the mighty strength to matchedText.
+        
+        Black Widow, the enigmatic spy, and Hawkeye, the master archer, provided their exceptional skills in espionage and marksmanship. The Hulk, a scientist turned unstoppable behemoth, lent his incredible strength when the situation demanded.
+        
+        Their missions took them to the far corners of the universe, where they faced cosmic threats and otherworldly adversaries. The Avengers' unity and heroism shone brightly, demonstrating that even in the face of insurmountable odds, they would always stand together to defend the planet.
+        
+        Their legacy was one of inspiration, a reminder that when the world called for heroes, the Avengers answered without hesitation. They proved that with determination, cooperation, and unwavering resolve, anyone could become a force for good in a world filled with challenges and dangers. The Avengers remained Earth's mightiest heroes, a beacon of hope in a turbulent world.</p>
+
+    </body>
+</html>
